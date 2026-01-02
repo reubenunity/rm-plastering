@@ -1,0 +1,62 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ---------------------------------------------
+    // 1. Mobile Menu Toggle
+    // ---------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        navMenu.classList.remove('active');
+    }));
+
+    // ---------------------------------------------
+    // 2. Smooth Scroll (Native behavior is set in CSS, this adds offset if needed)
+    // ---------------------------------------------
+    // Simple polyfill-like behavior if browser doesn't support smooth scroll well or for custom offset logic
+    // Keeping it simple with CSS scroll-behavior: smooth; for now.
+
+    // ---------------------------------------------
+    // 3. Scroll Animations (Intersection Observer)
+    // ---------------------------------------------
+    const observerOptions = {
+        root: null, // viewport
+        threshold: 0.1, // trigger when 10% of element is visible
+        rootMargin: "0px"
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('appear');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+
+    const animatedElements = document.querySelectorAll('.fade-in, .fade-in-up, .fade-in-left, .fade-in-right');
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
+    // ---------------------------------------------
+    // 4. Navbar Background on Scroll
+    // ---------------------------------------------
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+        } else {
+            navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
+        }
+    });
+
+});
