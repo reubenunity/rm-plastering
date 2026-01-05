@@ -810,3 +810,63 @@ img {
         padding: 2rem 1.5rem;
     }
 }
+
+/* =========================================
+   13. LEAD GEN & TRACKING
+   ========================================= */
+
+/* Sticky Mobile CTA */
+.sticky-cta {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    background-color: var(--gold);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 86, 179, 0.4);
+    z-index: 9999;
+    animation: slideUp 1s ease-out 2s backwards;
+    /* Delays appearance so it doesn't clash with hero load */
+}
+
+.sticky-cta:hover {
+    background-color: var(--gold-hover);
+    transform: translateY(-2px);
+}
+
+/* Frictionless Form Styles */
+.contact-form h3 {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+}
+
+.contact-form .btn-gold {
+    font-size: 1.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.privacy-notice {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

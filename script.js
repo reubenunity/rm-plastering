@@ -59,4 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---------------------------------------------
+    // 5. Lead Form Submission (Simulated)
+    // ---------------------------------------------
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+        leadForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // In a real scenario, you'd fetch() data to a backend here.
+            // For this demo/static site, we simulate success and redirect.
+            const btn = leadForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 1000);
+        });
+    }
+
 });
