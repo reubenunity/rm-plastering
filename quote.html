@@ -22,7 +22,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -101,7 +101,7 @@
         </div>
 
         <!-- The Frictionless Form -->
-        <div class="quote-card fade-in-up">
+        <div class="quote-card">
             <form class="contact-form" id="leadForm" style="padding: 0; background: none;">
                 <h2 class="text-center mb-4" style="font-size: 1.8rem;">Get Your Free Quote</h2>
                 <p class="text-center mb-4 text-muted">Tell us about your project and we'll reply shortly.</p>

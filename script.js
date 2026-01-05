@@ -6,16 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
 
-    mobileMenuBtn.addEventListener('click', () => {
-        mobileMenuBtn.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        mobileMenuBtn.classList.remove('active');
-        navMenu.classList.remove('active');
-    }));
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    }
 
     // ---------------------------------------------
     // 2. Smooth Scroll (Native behavior is set in CSS, this adds offset if needed)
@@ -51,13 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------
     const navbar = document.querySelector('.navbar');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
-        } else {
-            navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+            } else {
+                navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
+            }
+        });
+    }
 
     // ---------------------------------------------
     // 5. Lead Form Submission (Simulated)
