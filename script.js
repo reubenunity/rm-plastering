@@ -64,24 +64,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---------------------------------------------
-    // 5. Lead Form Submission (Simulated)
+    // 5. Lead Form Submission (Formspree)
     // ---------------------------------------------
     const leadForm = document.getElementById('leadForm');
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // In a real scenario, you'd fetch() data to a backend here.
-            // For this demo/static site, we simulate success and redirect.
             const btn = leadForm.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
 
+            // Show loading state
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                window.location.href = 'thank-you.html';
-            }, 1000);
+            const formData = new FormData(leadForm);
+
+            try {
+                const response = await fetch("https://formspree.io/f/mqeajrqa", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success! Redirect to thank you page for tracking
+                    window.location.href = 'thank-you.html';
+                } else {
+                    // Error state
+                    alert("Oops! There was a problem submitting your form. Please try calling us instead.");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                // Network error
+                alert("Oops! There was a problem submitting your form. Please try calling us instead.");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         });
     }
 
