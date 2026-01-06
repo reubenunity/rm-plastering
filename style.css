@@ -609,7 +609,7 @@ img {
     background: #fff;
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
-    z-index: 9999;
+    z-index: 200000;
     display: none;
     /* Hidden by default, shown by JS */
     border-top: 3px solid var(--gold);
@@ -862,6 +862,11 @@ img {
 
     .contact-form {
         padding: 2rem 1.5rem;
+    }
+
+    /* Prevent Sticky CTA from blocking footer content */
+    .footer {
+        padding-bottom: 90px;
     }
 }
 
