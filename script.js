@@ -107,4 +107,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---------------------------------------------
+    // 6. Cookie Banner
+    // ---------------------------------------------
+    const checkCookies = () => {
+        const consent = localStorage.getItem('rm_cookie_consent');
+        if (!consent) {
+            showCookieBanner();
+        }
+    };
+
+    const showCookieBanner = () => {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.innerHTML = `
+            <div class="cookie-content">
+                <div class="cookie-text">
+                    <p>We use cookies to improve your user experience. By continuing to visit this site you agree to our use of cookies. <a href="privacy.html" style="color: var(--gold); text-decoration: underline;">Learn more</a>.</p>
+                </div>
+                <div class="cookie-buttons">
+                    <button id="acceptCookies" class="btn-cookie">Accept</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(banner);
+
+        // Use timeout to trigger transition if we added CSS transitions, or just display block
+        setTimeout(() => {
+            banner.style.display = 'block';
+        }, 100);
+
+        document.getElementById('acceptCookies').addEventListener('click', () => {
+            localStorage.setItem('rm_cookie_consent', 'true');
+            banner.style.display = 'none';
+        });
+    };
+
+    checkCookies();
+
 });
