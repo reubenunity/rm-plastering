@@ -42,6 +42,15 @@ body {
     /* Ensure containment */
 }
 
+/* Nuclear option for overflow */
+.wrapper,
+section,
+header,
+footer {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 h1,
 h2,
 h3,
