@@ -892,11 +892,43 @@ img {
 
     .service-card,
     .gallery-item {
-        flex: 0 0 85%;
-        /* Shows 85% of card to encourage swipe */
-        scroll-snap-align: center;
+        scroll-snap-align: start;
         max-width: none;
-        /* Override any desktop max-widths */
+    }
+
+    /* Smaller Square Service Cards for Mobile */
+    .service-card {
+        flex: 0 0 160px;
+        /* Fixed width for square-ish look */
+        height: 160px;
+        /* Fixed height to force square */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .service-card i {
+        font-size: 2rem;
+        /* Smaller icon */
+        margin-bottom: 0.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 0.9rem;
+        /* Smaller text */
+        margin-bottom: 0;
+    }
+
+    .service-card p {
+        display: none;
+        /* Hide description to make it a small square */
+    }
+
+    .gallery-item {
+        flex: 0 0 85%;
+        /* Keep gallery items large */
     }
 
     /* Hide scrollbars for cleaner UX but keep functionality */
