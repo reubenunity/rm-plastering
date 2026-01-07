@@ -28,6 +28,8 @@
 
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -868,6 +870,55 @@ img {
     .footer {
         padding-bottom: 90px;
     }
+
+    /* Mobile Horizontal Scroll Groups */
+    .services-grid,
+    .gallery-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        margin-right: -15px;
+        /* Offset container padding for full bleed feel */
+        padding-right: 20px;
+        /* Peek effect */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .service-card,
+    .gallery-item {
+        flex: 0 0 85%;
+        /* Shows 85% of card to encourage swipe */
+        scroll-snap-align: center;
+        max-width: none;
+        /* Override any desktop max-widths */
+    }
+
+    /* Hide scrollbars for cleaner UX but keep functionality */
+    .services-grid::-webkit-scrollbar,
+    .gallery-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .services-grid,
+    .gallery-grid {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+/* Utility for mobile visibility */
+.mobile-only {
+    display: none;
 }
 
 /* =========================================
